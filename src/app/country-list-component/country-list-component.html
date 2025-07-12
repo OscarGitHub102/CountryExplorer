@@ -1,0 +1,33 @@
+<div class="content">
+  <div class="filters">
+    <select [(ngModel)] = "filtroContinente">
+      <option value="">Selecciona un continente</option>
+      <option value="Europe">Europa</option>
+      <option value="Asia">Asia</option>
+      <option value="Africa">África</option>
+      <option value="Americas">América</option>
+      <option value="Oceania">Oceanía</option>
+      
+    </select>
+
+    <select [(ngModel)] = "filtroIdioma">
+      <option value="">Selecciona un idioma</option>
+      <option value="Spanish">Español</option>
+      <option value="English">Inglés</option>
+      <option value="French">Francés</option>
+      <option value="Arabic">Árabe</option>
+      <option value="Chinese">Chino</option>
+    </select>
+  </div>
+
+    <div class="grid">
+        @for (country of obtenerPaisesFiltrados(); track $index) {
+            <div class="flag-card">
+                <img 
+                src="{{ country.flags.png }}" 
+                alt="{{ country.name }}" 
+                (click)="enlazarPais(country.name)">
+            </div>
+        }
+    </div>
+</div>
