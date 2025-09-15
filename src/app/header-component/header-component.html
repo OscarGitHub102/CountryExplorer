@@ -1,0 +1,34 @@
+<header class="header">
+  <a [routerLink]="['/']" class="logo-link">
+    <div class="logo">
+      <img src="world.png" alt="Logo" />
+      <h1>Country Explorer</h1>
+    </div>
+  </a>
+
+  <div class="search-container">
+    <div class="search-box">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        placeholder="Search for a country..."
+        [(ngModel)]="searchBox"
+        (input)="autocomplete()"
+        (keyup.enter)="search()"
+        (blur)="hideSuggestions()"
+      />
+    </div>
+    @if (suggestions.length>0) {
+    <div class="search-tips">
+      @for (sug of suggestions; track $index) {
+      <p (click)="selectCountry(sug)">{{ sug }}</p>
+      }
+    </div>
+    }
+  </div>
+
+  <nav class="navigation">
+    <a [routerLink]="['/']" class="nav-link" (click)="clearSearch()">Home</a>
+    <a [routerLink]="['/countries']" class="nav-link" (click)="clearSearch()">List of countries</a>
+  </nav>
+</header>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="card">
+    <img
+      src="{{ country.flags.png }}"
+      alt="Bandera de {{ country.name.common }}"
+      class="flag"
+    />
+    <div class="name">{{ country.name.common }}</div>
+    <div class="info">
+      <p><strong>Capital:</strong> {{ country.capital }}</p>
+      <p><strong>Continent:</strong> {{ country.region }}</p>
+      <p>
+        <strong>Language(s):</strong>
+        @for (language of country.idioms; track $index) { @if($index==0){
+        {{ language.value }}} @else {, {{ language.value }}
+        } }
+      </p>
+      <p>
+        <strong>Population:</strong> {{ country.population.toLocaleString('es-ES') }} inhabitants
+      </p>
+    </div>
+  </div>
+</div>

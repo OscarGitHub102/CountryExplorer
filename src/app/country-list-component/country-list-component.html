@@ -1,0 +1,35 @@
+<div class="content">
+  
+  <div class="filters">
+
+    <select [(ngModel)]="continentFilter">
+      <option value="">Select a continent</option>
+      @for (continent of continents; track $index) {
+        <option value="{{ continent }}">{{ continent }}</option>
+      }
+    </select>
+
+    <select [(ngModel)]="languageFilter">
+      <option value="">Select a language</option>
+      @for (language of languages; track $index) {
+        <option value="{{ language }}">{{ language }}</option>
+      }
+    </select>
+
+  </div>
+
+  <div class="grid">
+
+    @for (flag of getFilteredCountries(); track $index) {
+      <div class="flag-card">
+        <img
+          src="{{ flag.flags.png }}"
+          alt="{{ flag.name }}"
+          (click)="routeCountry(flag.name.common)"
+        />
+      </div>
+    }
+
+  </div>
+
+</div>
